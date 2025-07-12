@@ -27,6 +27,9 @@ export class LoginComponent {
 
           if (response.success) {
             this.apiService.sharedData = response.user;
+            localStorage.setItem('accessToken', response.accessToken);
+            localStorage.setItem('refreshToken', response.refreshToken);
+
             this.router.navigate(['home']);
           } else {
             this.errorMessage = response.message;

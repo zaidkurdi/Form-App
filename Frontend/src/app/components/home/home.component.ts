@@ -12,10 +12,17 @@ import { OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   data: any;
+  user: any;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.data = this.apiService.sharedData;
+    this.apiService.home().subscribe({
+      next: (res) => {
+        this.user = res;
+        console.log(this.user);
+      },
+    });
   }
 }

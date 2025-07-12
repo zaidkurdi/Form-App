@@ -15,5 +15,18 @@ export class ApiService {
     return this.http.post('http://localhost:5000/api/login', data);
   }
 
+  home() {
+    return this.http.get('http://localhost:5000/api/home');
+  }
+
+  refreshToken() {
+    const refreshToken = localStorage.getItem('refreshToken');
+    console.log('refresh: ', refreshToken);
+
+    return this.http.post('http://localhost:5000/api/refresh', {
+      refreshToken,
+    });
+  }
+
   sharedData: any;
 }
